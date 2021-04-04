@@ -21,6 +21,7 @@ export class AuthService {
     private router: Router) { }
 
   getUserState() {
+    
     return this.afAuth.authState;
   }
 

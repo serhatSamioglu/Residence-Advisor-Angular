@@ -1,0 +1,14 @@
+<p>create-apartment works!</p>
+
+<form #createApartmentForm="ngForm" (ngSubmit)="createApartment(createApartmentForm)" >
+    <div class="row">
+        <div class="col-12">
+          <label for="apartmentName">Apartment Name</label>
+          <input ngModel #apartmentName="ngModel" name="apartmentName" type="text" class="form-control">
+        </div>
+      </div>
+    
+    <div class="col-13">
+        <button class="btn btn-primary" type="submit">Create Apartment</button>
+    </div>
+</form>

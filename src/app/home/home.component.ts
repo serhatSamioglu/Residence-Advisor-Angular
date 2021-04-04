@@ -35,4 +35,8 @@ export class HomeComponent implements OnInit {
   register() {
     this.router.navigate(['/register']);
   }
+
+  openPage(pageName: any){
+    this.router.navigate([pageName]);
+  }
 }
