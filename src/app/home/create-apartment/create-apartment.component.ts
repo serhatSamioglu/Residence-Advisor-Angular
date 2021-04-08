@@ -23,7 +23,6 @@ export class CreateApartmentComponent implements OnInit {
   }
 
   createApartment(frm: { value: { apartmentName: string}}){
-    console.log(frm.value.apartmentName)
     // id ve qr yaratma
     this.apartmentID = uuid.v4()
     this.apartmentQR = uuid.v4()
@@ -45,12 +44,16 @@ export class CreateApartmentComponent implements OnInit {
         this.db.doc('Users/'+this.user.uid).update({
         apartmentID: this.apartmentID
         })
-
       })
-
+    this.displayApartmentInfo()
+      
     //id ve qr kodu ekrana bas
     
     //creta butonunu kapat
+  }
+
+  displayApartmentInfo(){
+    console.log("displayApartmentInfo")
   }
 
 }

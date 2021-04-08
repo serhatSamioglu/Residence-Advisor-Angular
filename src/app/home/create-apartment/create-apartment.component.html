@@ -11,4 +11,9 @@
     <div class="col-13">
         <button class="btn btn-primary" type="submit">Create Apartment</button>
     </div>
+
+    <p *ngIf="apartmentID">Apartment id: {{ apartmentID}}</p>
+
+    <qrcode *ngIf="apartmentQR" [qrdata]="apartmentQR" [size]="256" [level]="'M'"></qrcode> 
+
 </form>

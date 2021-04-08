@@ -1,0 +1,14 @@
+<p>set-dues works!</p>
+
+<form #setDuesForm="ngForm" (ngSubmit)="setDues(setDuesForm)" >
+    <div class="row">
+        <div class="col-12">
+          <label for="duesAmount">Amount of dues</label>
+          <input ngModel #duesAmount="ngModel" name="duesAmount" type="number" class="form-control">
+        </div>
+      </div>
+    
+    <div class="col-13">
+        <button class="btn btn-primary" type="submit">Set Dues</button>
+    </div>
+</form>

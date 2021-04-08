@@ -13,6 +13,8 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CreateApartmentComponent } from './home/create-apartment/create-apartment.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { SetDuesComponent } from './home/set-dues/set-dues.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { CreateApartmentComponent } from './home/create-apartment/create-apartme
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    CreateApartmentComponent
+    CreateApartmentComponent,
+    SetDuesComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { CreateApartmentComponent } from './home/create-apartment/create-apartme
       measurementId: "G-Q4M061PVCF"
     }),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
