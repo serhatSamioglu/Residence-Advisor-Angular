@@ -1,0 +1,14 @@
+<p>create-announcement works!</p>
+
+<form #announcementForm="ngForm" (ngSubmit)="createAnnouncement(announcementForm)" >
+    <div class="row">
+        <div class="col-12">
+          <label for="announcement">Announcement</label>
+          <input ngModel #announcement="ngModel" name="announcement" type="text" class="form-control">
+        </div>
+      </div>
+    
+    <div class="col-13">
+        <button class="btn btn-primary" type="submit">Create Announcement</button>
+    </div>
+</form>

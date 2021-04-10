@@ -5,6 +5,7 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 import { HomeComponent } from './home/home.component';
 import { CreateApartmentComponent } from './home/create-apartment/create-apartment.component';
 import { SetDuesComponent } from './home/set-dues/set-dues.component';
+import { CreateAnnouncementComponent } from './home/create-announcement/create-announcement.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'setDues',
     component: SetDuesComponent
+  },
+  {
+    path: 'createAnnouncement',
+    component: CreateAnnouncementComponent
   },
   {
     path: '',

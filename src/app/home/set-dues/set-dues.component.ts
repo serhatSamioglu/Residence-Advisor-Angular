@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+interface User {
+  apartmentID: string
+  email: string
+  firstname: string
+  lastname: string
+  role: string
+}
 
 @Component({
   selector: 'app-set-dues',
@@ -11,28 +20,29 @@ export class SetDuesComponent implements OnInit {
 
   user!: firebase.default.User;
   apartmentID: any;
-  hashmap!: Map<String, String>;
 
   constructor(
     private auth: AuthService,
-    private db: AngularFirestore) { }
+    private db: AngularFirestore) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   setDues(frm: { value: { duesAmount: string}}){
 
     this.auth.getUserState()
-      .subscribe( user => {
+      .subscribe( async user => {
         this.user = user!;
 
         //yönetici altına yaratılan apartmanın id si yollanıyor  
         //TODO: uid bilgisi geldikten sonra bu işlemin yapılması lazım
         this.db.collection('Users').doc(this.user.uid).valueChanges().subscribe(items => {
-          console.log(items)
-          //apartman id yi al aidteı düzenle
+          const tempUser = items as User
+          //apartmanın altına aidat bilgisini yolla
+          this.db.doc('Apartments/'+tempUser.apartmentID).update({
+            duesAmount: frm.value.duesAmount
+            })
         });
-        
-    })
+     })
+    
   }
 }

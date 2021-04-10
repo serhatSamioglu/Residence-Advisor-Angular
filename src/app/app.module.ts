@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { DatePipe } from '@angular/common'
+
 import { environment } from 'src/environments/environment';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -15,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { CreateApartmentComponent } from './home/create-apartment/create-apartment.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { SetDuesComponent } from './home/set-dues/set-dues.component';
+import { CreateAnnouncementComponent } from './home/create-announcement/create-announcement.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { SetDuesComponent } from './home/set-dues/set-dues.component';
     LoginComponent,
     HomeComponent,
     CreateApartmentComponent,
-    SetDuesComponent
+    SetDuesComponent,
+    CreateAnnouncementComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,7 @@ import { SetDuesComponent } from './home/set-dues/set-dues.component';
     AngularFirestoreModule,
     QRCodeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
