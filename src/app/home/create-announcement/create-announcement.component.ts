@@ -30,7 +30,7 @@ export class CreateAnnouncementComponent implements OnInit {
       setInterval(() => {
         this.now = new Date();
       }, 1);
-     }
+    }
 
   ngOnInit(): void {
   }

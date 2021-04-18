@@ -1,0 +1,14 @@
+<p>assign-janitor works!</p>
+
+<form #assignJanitorForm="ngForm" (ngSubmit)="assignJanitor(assignJanitorForm)" >
+    <div class="row">
+        <div class="col-12">
+          <label for="janitorID">Janitor ID</label>
+          <input ngModel #janitorID="ngModel" name="janitorID" type="email" class="form-control">
+        </div>
+      </div>
+    
+    <div class="col-13">
+        <button class="btn btn-primary" type="submit">Assign Janitor</button>
+    </div>
+</form>

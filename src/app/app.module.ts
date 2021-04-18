@@ -18,6 +18,10 @@ import { CreateApartmentComponent } from './home/create-apartment/create-apartme
 import { QRCodeModule } from 'angularx-qrcode';
 import { SetDuesComponent } from './home/set-dues/set-dues.component';
 import { CreateAnnouncementComponent } from './home/create-announcement/create-announcement.component';
+import { AssignJanitorComponent } from './home/assign-janitor/assign-janitor.component';
+import { ApartmentInfoComponent } from './home/apartment-info/apartment-info.component';
+import { ApartmentPaymentsComponent } from './home/apartment-payments/apartment-payments.component';
+import { MakeQuestionnaireComponent } from './home/make-questionnaire/make-questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { CreateAnnouncementComponent } from './home/create-announcement/create-a
     HomeComponent,
     CreateApartmentComponent,
     SetDuesComponent,
-    CreateAnnouncementComponent
+    CreateAnnouncementComponent,
+    AssignJanitorComponent,
+    ApartmentInfoComponent,
+    ApartmentPaymentsComponent,
+    MakeQuestionnaireComponent
   ],
   imports: [
     BrowserModule,

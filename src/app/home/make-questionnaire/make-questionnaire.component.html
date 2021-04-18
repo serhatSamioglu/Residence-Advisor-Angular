@@ -1,0 +1,54 @@
+
+<form #makeQuestionnaireForm="ngForm" (ngSubmit)="makeQuestionnaire(makeQuestionnaireForm)">
+    <div class="row">
+        <div class="col-12">
+          <label for="question">Question</label>
+          <input ngModel #question="ngModel" name="question" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row" *ngIf="answer1Visibility">
+        <div class="col-12">
+          <label for="answer1">Answer1</label>
+          <input ngModel #answer1="ngModel" name="answer1" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row" *ngIf="answer2Visibility">
+        <div class="col-12">
+          <label for="answer2">Answer2</label>
+          <input ngModel #answer2="ngModel" name="answer2" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row" *ngIf="answer3Visibility">
+        <div class="col-12">
+          <label for="answer3">Answer3</label>
+          <input ngModel #answer3="ngModel" name="answer3" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row" *ngIf="answer4Visibility">
+        <div class="col-12">
+          <label for="answer4">Answer4</label>
+          <input ngModel #answer4="ngModel" name="answer4" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row" *ngIf="answer5Visibility">
+        <div class="col-12">
+          <label for="answer5">Answer5</label>
+          <input ngModel #answer5="ngModel" name="answer5" type="text" class="form-control">
+        </div>
+    </div>
+    
+    <button (click)="addAnswer()">add answer</button>
+
+    <div class="col-13">
+        <button class="btn btn-primary" type="submit">Make Questionnaire</button>
+    </div>
+
+</form>
+
+
+

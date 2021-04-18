@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DatePipe, formatDate} from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { AngularFirestore} from '@angular/fire/firestore';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 interface User {
   apartmentID: string
@@ -25,8 +26,10 @@ interface Apartment {
 export class ApartmentPaymentsComponent implements OnInit {
 
   now: Date = new Date()
+  date1:any;
 
   user!: firebase.default.User;
+  apartmentID: any;
 
   debtElectricityPayment: number;
   apartmentBudget: number;
@@ -42,47 +45,21 @@ export class ApartmentPaymentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getApartmentCreationDate()
-    /*this.auth.getUserState()
-      .subscribe( async user => {
-        this.user = user!;
-
-        //yönetici altına yaratılan apartmanın id si yollanıyor  
-        //TODO: uid bilgisi geldikten sonra bu işlemin yapılması lazım
-        this.db.collection('Users').doc(this.user.uid).valueChanges().subscribe(items => {
-          const tempUser = items as User
-          //apartmanın altına aidat bilgisini yolla
-          var apartmentID = tempUser.apartmentID
-
-          this.db.collection('Apartments').doc(apartmentID).valueChanges().subscribe(items => {
-            const tempApartment = items as Apartment
-            this.apartmentElectricityPayment = tempApartment.apartmentElectricityPayment
-            this.apartmentBudget = tempApartment.apartmentBudget
-
-            var date1:any = new Date(tempApartment.apartmentCreationDate);
-            var date2:any = new Date(this.datepipe.transform(this.now, 'yyyy-MM-dd'));
-            var dayDifference:any = Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));
-
-            this.debtElectricityPayment = Math.round(dayDifference/30)*this.apartmentElectricityPayment
-          });
-        });
-     }) */
-    
+    this.getApartmentCreationDate()
   }
 
-  /*getApartmentCreationDate(){
+  getApartmentCreationDate(){
     this.auth.getUserState()
       .subscribe( async user => {
         this.user = user!;
-
         //yönetici altına yaratılan apartmanın id si yollanıyor  
         //TODO: uid bilgisi geldikten sonra bu işlemin yapılması lazım
         this.db.collection('Users').doc(this.user.uid).valueChanges().subscribe(items => {
           const tempUser = items as User
           //apartmanın altına aidat bilgisini yolla
-          var apartmentID = tempUser.apartmentID
+          this.apartmentID = tempUser.apartmentID
 
-          this.db.collection('Apartments').doc(apartmentID).valueChanges().subscribe(items => {
+          this.db.collection('Apartments').doc(this.apartmentID).valueChanges().subscribe(items => {
             const tempApartment = items as Apartment
             this.apartmentElectricityPayment = tempApartment.apartmentElectricityPayment
             this.apartmentBudget = tempApartment.apartmentBudget
@@ -93,15 +70,21 @@ export class ApartmentPaymentsComponent implements OnInit {
   }
 
   calculateDayDifference(apartmentCreationDate: string){
-    var date1:any = new Date('2021-4-12');
+    this.date1 = new Date(apartmentCreationDate);
     var date2:any = new Date(this.datepipe.transform(this.now, 'yyyy-MM-dd'));
-    var dayDifference:any = Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));
+    var dayDifference:any = Math.floor((date2 - this.date1) / (1000 * 60 * 60 * 24));
 
     this.debtElectricityPayment = Math.round(dayDifference/30)*this.apartmentElectricityPayment
-  }*/
-
-  /*payApartmentElectricity(){
-    console.log('basildi')
-  }*/
+  }
+  payApartmentElectricity(){
+    var date3:any = new Date(this.datepipe.transform(this.now, 'yyyy-MM')+'-'+
+    this.datepipe.transform(this.date1, 'dd'))
+    if(this.apartmentBudget>=this.debtElectricityPayment && this.debtElectricityPayment!=0){
+      this.db.doc('Apartments/'+this.apartmentID).update({
+        apartmentBudget: this.apartmentBudget-this.debtElectricityPayment,
+        apartmentCreationDate:this.datepipe.transform(date3, 'yyyy-MM-dd')
+      })
+    }
+  }
 
 }

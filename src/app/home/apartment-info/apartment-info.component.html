@@ -1,0 +1,8 @@
+
+<p *ngIf="apartmentName">Apartment Name: {{ apartmentName}}</p>
+
+<p *ngIf="apartmentID">Apartment id: {{ apartmentID}}</p>
+
+<p *ngIf="apartmentDues">Apartment Dues: {{ apartmentDues}}</p>
+
+<qrcode *ngIf="apartmentQR" [qrdata]="apartmentQR" [size]="256" [level]="'M'"></qrcode> 
