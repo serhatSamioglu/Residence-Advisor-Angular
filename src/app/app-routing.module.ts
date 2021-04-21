@@ -10,6 +10,7 @@ import { AssignJanitorComponent } from './home/assign-janitor/assign-janitor.com
 import { ApartmentInfoComponent } from './home/apartment-info/apartment-info.component';
 import { ApartmentPaymentsComponent } from './home/apartment-payments/apartment-payments.component';
 import { MakeQuestionnaireComponent } from './home/make-questionnaire/make-questionnaire.component';
+import { ListQuestionnairesComponent } from './home/list-questionnaires/list-questionnaires.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'makeQuestionnaire',
     component: MakeQuestionnaireComponent
+  },
+  {
+    path: 'listQuestionnaires',
+    component: ListQuestionnairesComponent
   },
   {
     path: '',

@@ -22,6 +22,7 @@ import { AssignJanitorComponent } from './home/assign-janitor/assign-janitor.com
 import { ApartmentInfoComponent } from './home/apartment-info/apartment-info.component';
 import { ApartmentPaymentsComponent } from './home/apartment-payments/apartment-payments.component';
 import { MakeQuestionnaireComponent } from './home/make-questionnaire/make-questionnaire.component';
+import { ListQuestionnairesComponent } from './home/list-questionnaires/list-questionnaires.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MakeQuestionnaireComponent } from './home/make-questionnaire/make-quest
     AssignJanitorComponent,
     ApartmentInfoComponent,
     ApartmentPaymentsComponent,
-    MakeQuestionnaireComponent
+    MakeQuestionnaireComponent,
+    ListQuestionnairesComponent
   ],
   imports: [
     BrowserModule,

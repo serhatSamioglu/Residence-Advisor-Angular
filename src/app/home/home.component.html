@@ -11,6 +11,7 @@
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/apartmentInfo')">Apartment Information</button><br>
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/apartmentPayments')">Apartment Payments</button><br>
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/makeQuestionnaire')">Make a Questionnaire</button><br>
+<br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/listQuestionnaires')">List Questionnaires</button><br>
 
 <br><button class="btn btn-primary" *ngIf="user" (click)="logout()">Logout</button><br>
 <button class="btn btn-primary" *ngIf="!user" (click)="login()">Login</button>
