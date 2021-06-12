@@ -1,3 +1,13 @@
 <p>list-questionnaires worsks!</p>
 
-<p *ngFor="let questionnaire of questionnaires">{{questionnaire.question}}</p>
+<div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of questionnaires">
+          <span class="badge">{{ item.release_date }}</span>
+          {{ item.question }}
+          <button class="btn btn-success" (click)="onAddToCollection(item)">Click to see result</button>&nbsp;
+        </li>
+      </ul>
+    </div>
+  </div>

@@ -21,7 +21,6 @@ export class AuthService {
     private router: Router) { }
 
   getUserState() {
-    
     return this.afAuth.authState;
   }
 
@@ -38,7 +37,6 @@ export class AuthService {
   }
 
   createUser(user: { email: any; password: any; firstName: string; lastName: string; }) {
-    console.log(user);
     this.afAuth.createUserWithEmailAndPassword( user.email, user.password)
       .then( userCredential => {
         this.newUser = user;

@@ -85,7 +85,7 @@ export class MakeQuestionnaireComponent implements OnInit {
 
           let release_date =this.datepipe.transform(this.now, 'yyyy-MM-dd-hh-mm-ss');
           
-          this.db.collection('Questionnaires').doc(this.apartmentID).collection(release_date).doc('anket').set({
+          this.db.collection('Questionnaires'+this.apartmentID).doc(release_date).set({
             question: frm.value.question,
             answers,
             answersVoteCount,

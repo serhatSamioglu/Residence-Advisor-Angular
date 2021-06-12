@@ -5,6 +5,7 @@
 <button class="btn btn-primary mr-2" *ngIf="!user" (click)="register()">Register</button>
 
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/createApartment')">Create Apartment</button><br>
+<br><button class="btn btn-primary" *ngIf="!user" (click)="login()">Login</button><br>
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/setDues')">Set Dues</button><br>
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/createAnnouncement')">Create Announcement</button><br>
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/assignJanitor')">Assign Janitor</button><br>
@@ -14,5 +15,4 @@
 <br><button class="btn btn-primary" *ngIf="user" (click)="openPage('/listQuestionnaires')">List Questionnaires</button><br>
 
 <br><button class="btn btn-primary" *ngIf="user" (click)="logout()">Logout</button><br>
-<button class="btn btn-primary" *ngIf="!user" (click)="login()">Login</button>
 
