@@ -6,3 +6,7 @@
 <p *ngIf="apartmentDues">Apartment Dues: {{ apartmentDues}}</p>
 
 <qrcode *ngIf="apartmentQR" [qrdata]="apartmentQR" [size]="256" [level]="'M'"></qrcode> 
+
+<agm-map [zoom]="8" [latitude]="latitude" [longitude]="longitude">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map>

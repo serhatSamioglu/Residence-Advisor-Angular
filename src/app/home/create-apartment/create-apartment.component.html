@@ -1,5 +1,7 @@
 <p>create-apartment works!</p>
-
+<agm-map [zoom]="5.5" [latitude]="39.015137" [longitude]="34.979530" (mapClick)="onChoseLocation($event)">
+  <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map>
 <form #createApartmentForm="ngForm" (ngSubmit)="createApartment(createApartmentForm)" >
     <div class="row">
         <div class="col-12">
@@ -17,3 +19,5 @@
     <qrcode *ngIf="apartmentQR" [qrdata]="apartmentQR" [size]="256" [level]="'M'"></qrcode> 
 
 </form>
+
+

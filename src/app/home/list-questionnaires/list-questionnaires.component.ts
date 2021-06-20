@@ -10,12 +10,6 @@ interface User {
   lastname: string
   role: string
 }
-interface Anket {
-  answersVoteCount: Map<String,number>
-  answers: Map<String,String>
-  release_date: String
-  question: String
-}
 @Component({
   selector: 'app-list-questionnaires',
   templateUrl: './list-questionnaires.component.html',
@@ -26,13 +20,6 @@ export class ListQuestionnairesComponent implements OnInit {
   user!: firebase.default.User;
 
   questionnaires = new Array<any>();
-
-  collectables = [
-    {description: 'A very rare copy of "jQuery for Dummies"', type: 'Book'},
-    {description: 'The first Letter ever written', type: 'Piece of Paper'},
-    {description: 'A photograph showing nothing', type: 'Photo'},
-    {description: 'A box with all sold Zunes', type: 'Garbage'}
-  ];
   
   onAddToCollection(item: any) {
     let answers: String = "\n"+item.question+" ("+item.release_date+")"+"\n"+"\n"
@@ -59,19 +46,12 @@ export class ListQuestionnairesComponent implements OnInit {
       .subscribe( async user => {
         this.user = user!;
 
-        //yönetici altına yaratılan apartmanın id si yollanıyor  
-        //TODO: uid bilgisi geldikten sonra bu işlemin yapılması lazım
         this.db.collection('Users').doc(this.user.uid).valueChanges().subscribe(items => {
           const tempUser = items as User
           
           this.db.collection("Questionnaires"+tempUser.apartmentID)
           .get().toPromise().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                /*const tempDoc = doc.data() as Anket
-                this.anketler.push(tempDoc)
-                console.log(this.anketler);
-                console.log("----");*/
 
                 let singleData = { 
                 question: doc.data()["question"] as String,
@@ -80,34 +60,9 @@ export class ListQuestionnairesComponent implements OnInit {
                 answersVoteCount: doc.data()["answersVoteCount"] as [[String:number]] } 
 
                 this.questionnaires.push(singleData)
-                /*console.log(doc.data());
-                console.log("----");
-                console.log(doc.data()["question"] as String)
-                console.log("----");
-                let answers = doc.data()["answers"] as [[String:any]]
-                console.log(answers);
-                console.log("----");
-                console.log(answers["answer1"] as String)
-                console.log("****");*/
             });
           });
         });
      })
-
-    /*this.db.collection("deneme2")
-    .get().toPromise().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          const tempDoc = doc.data() as Anket
-          console.log(doc.data());
-          console.log("----");
-          let userNotifications = doc.data()["cevaplar"] as [[String:any]]
-
-          console.log(userNotifications["cevap1"] as String)
-          console.log("*****");
-      });
-    });*/
-
-
   }
 }

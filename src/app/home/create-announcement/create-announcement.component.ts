@@ -49,7 +49,7 @@ export class CreateAnnouncementComponent implements OnInit {
 
           let latest_date =this.datepipe.transform(this.now, 'yyyy-MM-dd-hh-mm-ss');
           
-          this.db.collection('Announcements').doc(this.apartmentID).collection(latest_date).doc('duyuru').set({
+          this.db.collection('Announcements'+this.apartmentID).doc(latest_date).set({
             context: frm.value.announcement
           })
         });

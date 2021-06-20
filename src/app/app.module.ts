@@ -10,6 +10,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { DatePipe } from '@angular/common'
 
+import { AgmCoreModule } from '@agm/core';
+
 import { environment } from 'src/environments/environment';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -58,7 +60,10 @@ import { ListQuestionnairesComponent } from './home/list-questionnaires/list-que
     }),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    QRCodeModule
+    QRCodeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAG0YyNx1R4og1rpIWsZN10MtbBufGIkk4'
+    })
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -15,6 +15,9 @@ export class CreateApartmentComponent implements OnInit {
   apartmentQR: any;
   apartmentElectricityPayment: any;
 
+  latitude : any;
+  longitude: any;
+
   user!: firebase.default.User;
 
   now: Date = new Date()
@@ -31,6 +34,13 @@ export class CreateApartmentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onChoseLocation(event) {
+    this.latitude = event.coords.lat
+    this.longitude = event.coords.lng
+    console.log(this.latitude)
+    console.log(this.longitude)
+  }
+
   createApartment(frm: { value: { apartmentName: string}}){
     // id ve qr yaratma
     this.apartmentID = uuid.v4()
@@ -45,6 +55,8 @@ export class CreateApartmentComponent implements OnInit {
       apartmentElectricityPayment: this.apartmentElectricityPayment,
       apartmentBudget: 0,
       apartmentCreationDate: this.datepipe.transform(this.now, 'yyyy-MM-dd'),
+      latitude: this.latitude,
+      longitude: this.longitude,
     })
 
     //giriş yapmış kullanıcı değişkene atılıyor

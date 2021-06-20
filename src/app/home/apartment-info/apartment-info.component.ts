@@ -14,6 +14,8 @@ interface Apartment {
   apartmentName: string
   apartmentQR: string
   duesAmount: string
+  latitude : any
+  longitude: any
 }
 
 @Component({
@@ -29,6 +31,9 @@ export class ApartmentInfoComponent implements OnInit {
   apartmentQR: any;
 
   user!: firebase.default.User;
+
+  latitude : any;
+  longitude: any;
 
   constructor(
     private auth: AuthService,
@@ -51,6 +56,8 @@ export class ApartmentInfoComponent implements OnInit {
             this.apartmentName = tempApartment.apartmentName
             this.apartmentDues = tempApartment.duesAmount
             this.apartmentQR = tempApartment.apartmentQR
+            this.latitude = tempApartment.latitude
+            this.longitude = tempApartment.longitude
           });
         });
      })
